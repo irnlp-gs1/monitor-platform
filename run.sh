@@ -41,8 +41,8 @@ build() {
   #
   ## Untar bundles in a comman folder
   mkdir -p $release_target_folder
-  mv $client_untar_path ${release_target_folder}/html
-  mv $api_untar_path ${release_target_folder}/html/platform
+  rsync -au $client_untar_path/ ${release_target_folder}/html
+  rsync -au $api_untar_path/ ${release_target_folder}/html/platform
   #
   ## Configure the client to reach backend at '/platform'
   cat > ${release_target_folder}/html/config.js <<EOF
@@ -60,7 +60,7 @@ EOF
   #
   ## Additional files for the release
   cp /dist/README.release.md ${release_target_folder}
-  mkdir ${release_target_folder}/dist
+  mkdir -p ${release_target_folder}/dist
   cp /dist/apache-vhost.conf ${release_target_folder}/dist
   #
   ## Adjust folder permissions

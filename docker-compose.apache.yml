@@ -1,16 +1,14 @@
 version: "2"
 services:
   ushahidi:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
+    build: .
     command: run
     volumes:
       - .tars:/tars
     links:
       - mysql
     ports:
-      - 80:80
+      - 11180:80
     environment:
       MYSQL_HOST: mysql
       MYSQL_DATABASE: ushahidi
