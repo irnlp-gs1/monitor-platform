@@ -10,7 +10,7 @@ services:
     links:
       - mysql
     ports:
-      - 11180:80
+      - 10080:80
     environment:
       MYSQL_HOST: mysql
       MYSQL_DATABASE: ushahidi
@@ -20,6 +20,8 @@ services:
     build:
       context: ./docker/mysql
       dockerfile: Dockerfile
+    volumes:
+      - ./mysql_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: ushahidi
       MYSQL_USER: ushahidi
