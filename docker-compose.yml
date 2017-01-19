@@ -10,8 +10,7 @@ services:
     links:
       - mysql
     ports:
-      - 10080:80
-      - 9000:9000
+      - 11180:80
     environment:
       MYSQL_HOST: mysql
       MYSQL_DATABASE: ushahidi
